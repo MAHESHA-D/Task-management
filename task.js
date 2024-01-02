@@ -1,71 +1,36 @@
-let button = document.getElementById('add');
-let taskList = document.getElementById('taskList');
-let input = document.getElementById('input');
-    // local storage
-    let tasks = [];
-
-window.onload = () => {
-       tasks = JSON.parse(localStorage.getItem('tasks')) || []
-      tasks.forEach(task => addTask(task)); 
-    }
-    button.addEventListener('click', () => {
-        if (input.value.trim() === '') {
-            alert('Please Enter Task Name');
-        } else {
-            tasks.push({ text: input.value, completed: false });
-            localStorage.setItem('tasks', JSON.stringify(tasks));
-            addTask(input.value);
-            input.value = '';
+const inputbox=document.getElementById('input-box');
+const listContainer=document.getElementById('list-details');
+        function addTask(){
+            if(inputbox.value===""){
+                alert('Write something it should not be empty');
+            }
+            else{
+                let li=document.createElement('li');
+                li.innerHTML=inputbox.value;
+                listContainer.appendChild(li);
+                let span=document.createElement('span');
+                //span.innerHTML='\u00d7';
+                span.innerHTML='Delete';
+                li.appendChild(span);
+            }
+            inputbox.value="";
+            saveData();
         }
-    });
-function addTask(task) {
-      let listItem = document.createElement('p');
-      let checkbox = document.createElement('input');
-      checkbox.type = 'checkbox';
-      listItem.innerText="Completed"
-      listItem.style.fontSize='15px'
-      listItem.appendChild(checkbox);
+        listContainer.addEventListener('click', function (e){
+            if(e.target.tagName==='LI'){
+                e.target.classList.toggle('checked');
+                saveData();
+            }
+            else if(e.target.tagName ==='SPAN'){
+                e.target.parentElement.remove();
+                saveData();
+            }
+        });
 
-      let textSpan = document.createElement('p');
-      textSpan.innerText = task.text;
-      listItem.appendChild(textSpan);
-
-      
-      
-      let deleteButton = document.createElement('button');
-      deleteButton.style.borderRadius='6px'
-      deleteButton.style.marginLeft='10px'
-      deleteButton.innerText = 'Delete';
-      listItem.appendChild(deleteButton);
-
-      taskList.appendChild(listItem);
-
-checkbox.addEventListener('change', () => {
-        task.completed = checkbox.checked;
-        localStorage.setItem('tasks', JSON.stringify(tasks));
-        updateTaskList();
-      });
-
-deleteButton.addEventListener('click', () => {
-        removeTask(task);
-      });
-
-      if (task.completed) {
-        textSpan.style.textDecoration = 'line-through';
-        checkbox.checked = true;
-      }
-    }
-function removeTask(task) {
-      let index = tasks.indexOf(task);
-      if (index > -1) {
-        tasks.splice(index, 1);
-      }
-      localStorage.setItem('tasks', JSON.stringify(tasks));
-      updateTaskList();
-    }
-
-function updateTaskList() {
-      taskList.innerHTML = '';
-      tasks.forEach(task => addTask(task));
-    }
- 
+        function saveData(){
+            localStorage.setItem('data', listContainer.innerHTML);
+        }
+        function showData(){
+            listContainer.innerHTML=localStorage.getItem('data');
+        }
+        showData();
