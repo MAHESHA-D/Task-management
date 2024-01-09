@@ -1,92 +1,119 @@
 *{
-    margin:0;
-    padding:0;
+    margin:auto;
+    padding:auto;
     box-sizing: border-box;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans';
+    background-color: #e7f3f7;
 }
 .container{
     width: 100%;
     min-height: 100vh;
     padding:10px;
-    background-image: url('D:/Tasks/Task management/task_background.png');
+    /* background-image: url('D:/Tasks/Task management/task_background.png'); */
 }
 .task-app{
     width: 100%;
     max-width: 540px;
-    background-color: #fff;
+    height: 200px;
     margin: 100px auto 20px;
     padding: 40px 30px 70px;
     border-radius: 10px;
+    border:2px solid black;
+    /* background:linear-gradient(to bottom, rgb(169, 176, 243), rgb(164, 150, 224)); */
 }
 .task-app h2{   
-    color: #002765;
-    display: flex;
-    align-items: center;
+    color: black;
+    text-align: center;
+    font-size: 30px;
     margin-bottom: 20px;
+    background: transparent;
 }
 .row{
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #edeef0;
-    border-radius: 30px;
-    padding-left:20px;
+    position:relative;
+    border:1px solid darkgray;
+    border-radius: 10px;
+    left:-60px;
     margin-bottom: 25px;
+    height: 50px;
+    width: 350px;
+   
 }
-input{
-    flex:1;
+.row:hover{
+    box-shadow: 2px 1px 3px gray;
+}
+#input-box{
     border:none;
     outline: none;
-    background: transparent;
-    padding:10px;
+    position: relative;
+    /* background: transparent; */
+    left: -20px;
     font-size:15px;
+    width: 290px;
+
 }
 .btn{
-    border:none;
+    position: relative ;
+    border:1px outset;
     outline: none;
-    padding:16px 50px;
-    background:tomato;
-    color: #fff;
-    font-size: 16px;
+    background:#696daf;
+    color:white;
+    font-size: 18px;
     cursor: pointer;
-    border-radius: 40px;
+    border-radius: 10px;
+    top:-87%;
+    width: 100px;
+    height: 50px;
+    left:80%;
+}
+.btn:hover{
+    background-color:rgb(108, 134, 145);
+    /* box-shadow: 1px 0px 4px blue;  */
 }
 .list-container{
-    width:auto;
+    margin-left:20%;
+    align-content: center;
+    text-align: center;
+    width:60%;
     height:auto;
-    border:#555;
-    background:rgba(53, 163, 236, 0.466);
-    border:transparent;
+    /* background:rgba(53, 163, 236, 0.466); */
+    /* border: 1px solid dodgerblue; */
+    border-radius: 10px;
 }
-ul li{
-    list-style: none;
+ /* p{
     font-size: 20px;
     padding: 12px 8px 12px 50px;
-    user-select: none;
+    user-select:none;
     cursor: pointer;
     position: relative;
+    background-color: transparent;
 }
-ul li::before{
+p:hover{
+    font-size:22px;
+}
+p::before{
     content: "";
     position: absolute;
     height:28px;
     width:28px;
     border-radius:50%;
-    background-image: url('D:/Tasks/Task management/unchecked.png');
-    background-size: cover;
+    /* background-image: url('D:/Tasks/Task management/unchecked.png'); */
+    /* background-size: cover; 
     background-position: center;
     top:12px;
     left:8px;
 }
-ul li.checked{
-    color:lightgray;
-    text-decoration:line-through;
+p.checked{
+    background-color:rgb(204, 252, 204);
+    border-radius: 10px;
+    /* text-decoration:line-through; 
+ } 
+p.checked::before{
+    background-image: url('D:/Tasks/Task management/checked-green.png');
 }
-ul li.checked::before{
-    background-image: url('D:/Tasks/Task management/checked.png');
-}
-ul li span{
+ p span{
     position:absolute;
-    right:0;
+    right:-20%;
     top:5px;
     width:60px;
     height:40px;
@@ -94,8 +121,83 @@ ul li span{
     color:black;
     line-height:40px;
     text-align: center;
+    border-radius: 15%;
 }
-ul li span:hover{
-    background: skyblue;
+ p span:hover{
+    /* background: skyblue; 
     border-radius:20%;
+    background: transparent;
+    font-size: 22px;
+    box-shadow: 1px 2px 4px dodgerblue;
+} */
+ p div{
+    position:absolute;
+    right:-20%;
+    top:5px;
+    width:50px;
+    height:40px;
+    font-size:20px;
+    color:black;
+    line-height:40px;
+    text-align: center;
+    font-weight: 0;
+    border-radius: 15%;
+    background-color: transparent;
+}
+input#reminderTime{
+    position:relative;
+    top:-85%;
+    right:-45%;
+    width: 20px;
+    height:auto;
+    cursor: pointer;
+    /* background-image: url('D:/Tasks/Task management/calender.png'); */
+}
+#reminderTime:hover{
+    height: 20px;
+}
+/* button#reminder_btn{
+font-size: 15px;
+position:relative;
+top:-20%;
+left:-20%;
+width:100px;
+height:38px;
+border-radius: 8px;
+background-color: rgb(110, 110, 245);
+outline: none;
+border: 1px outset ;
+cursor: pointer;
+} */
+/* 
+#reminder_btn:hover{
+background-color: rgb(100, 39, 241); 
+}*/
+table {
+    width: 100%;
+    border-collapse:collapse;
+    margin-top: 10px;
+    /* border-radius: 20px; */
+}
+
+th, td {
+    /* text-align:center; */
+    /* border-radius:10px; */
+    border: 1.5px solid rgb(77, 77, 77);
+    padding: 8px;
+    text-align: center;
+    /* border-collapse: collapse; */
+
+}
+/* th {
+border-radius: 5px;
+
+} */
+#del_btn{
+    border: 1px solid;
+    border-radius: 5px;
+    /* background-color:rgb(108, 134, 145) ; */
+}
+#del_btn:hover{
+    background-color:rgb(108, 134, 145) ;
 }
